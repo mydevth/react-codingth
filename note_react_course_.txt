@@ -1,0 +1,30 @@
+React 
+
+Git
+Node
+VS Code 
+  VS Code Extensions
+	ES7 React/Redux/GraphQl/Ract-Native snippets
+	html to JSX
+	Material Icon Theme
+	Prettier - Code formatter
+		copy ไปไว้ที่ setting
+		"[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
+
+Postman
+Chrome Extensions - React Developer Tools
+
+Create React App
+https://reactjs.org/docs/create-a-new-react-app.html
+ npx create-react-app <project-name>
+ 
+PropTyeps  (props typechecking)
+	npm install --save prop-types@15
+	
+styled-components
+	www.styled-components.com
+	npm install --save style-components@5
+	
+	
