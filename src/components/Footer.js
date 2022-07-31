@@ -1,32 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-export const Footer = (props) => {
-  const { title, website, postcode, developer, isOpen } = props;
-
+const Footer = () => {
   return (
     <div>
-      <hr />
-      <h4 style={styles.title}>
-        {title}&copy; {new Date().getFullYear()}
-      </h4>
-      <p style={{ color: "green", fontSize: 16 }}>
-        {website} {developer} {postcode} {isOpen.toString()}
-      </p>
-      <p style={styles.title}>MydevTH</p>
+      <footer className="container">
+        <p>© Chonburi.biz 2017-{new Date().getFullYear()}</p>
+      </footer>
     </div>
   );
 };
 
-const styles = {
-  title: {
-    color: "Red",
-  },
-};
-
-Footer.propTypes = {
-  title: PropTypes.string,
-  developer: PropTypes.string,
-  postcode: PropTypes.number,
-  isOpen: PropTypes.bool,
-};
+export default Footer;

@@ -27,4 +27,8 @@ styled-components
 	www.styled-components.com
 	npm install --save style-components@5
 	
+Section 5 ใช้ React ร่วมกับ Bootstrap
+ npm install bootstrap@4
+
+	
 	
