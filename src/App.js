@@ -9,14 +9,15 @@ import ProductPage from "./pages/ProductPage";
 import ShopPage from "./pages/ShopPage";
 import DetailPage from "./pages/DetailPage";
 import MenuPage from "./pages/MenuPage";
+import HospitalPage from "./pages/hospital/HospitalPage";
 
 function App() {
   return (
     <Router>
       <NavBar />
       <Switch>
-        <Route exact path="/">
-          <Homepage />
+        <Route path="/hospital">
+          <HospitalPage />
         </Route>
         <Route path="/product">
           <ProductPage />
@@ -27,11 +28,14 @@ function App() {
         <Route path="/about">
           <AboutPage />
         </Route>
-        <Route path="/detail">
+        <Route path="/detail/:id/title/:title">
           <DetailPage />
         </Route>
-        <Route path="/menu">
+        <Route path="/menu/:id">
           <MenuPage />
+        </Route>
+        <Route exact path="/">
+          <Homepage />
         </Route>
       </Switch>
       <Footer />

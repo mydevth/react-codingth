@@ -1,26 +1,29 @@
 import React from "react";
 import { BsFillChatSquareDotsFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
   return (
-    <div>
+    <>
       <div>
         <main role="main">
           {/* Main jumbotron for a primary marketing message or call to action */}
           <div className="jumbotron">
             <div className="container">
-              <h1 className="display-3">Hello, world!</h1>
+              <h1 className="display-3">ยินดีต้อนรับทุกคน!</h1>
               <p>
-                This is a template for a simple marketing or informational
-                website. It includes a large callout called a jumbotron and
-                three supporting pieces of content. Use it as a starting point
-                to create something more unique.
+                เว็บนี้พัฒนาด้วย React เป็นคอร์สเรียนวิดีโอจาก
+                Codingthailand.com By โค๊ชเอก{" "}
+                <BsFillChatSquareDotsFill color="red" size="2em" />
               </p>
               <p>
-                <BsFillChatSquareDotsFill color="red" size="2em" />
-                <a className="btn btn-primary btn-lg" href="#" role="button">
-                  Learn more »
-                </a>
+                <Link
+                  className="btn btn-primary btn-lg"
+                  to="/product"
+                  role="button"
+                >
+                  สินค้าทั้งหมด »
+                </Link>
               </p>
             </div>
           </div>
@@ -36,11 +39,6 @@ const Homepage = () => {
                   Heaven is jealous of our love, angels are crying from up
                   above. Yeah, you take me to utopia.
                 </p>
-                <p>
-                  <a className="btn btn-secondary" href="#" role="button">
-                    View details »
-                  </a>
-                </p>
               </div>
               <div className="col-md-4">
                 <h2>Heading</h2>
@@ -52,11 +50,6 @@ const Homepage = () => {
                   me I was alright but things were kinda heavy. Heavy is the
                   head that wears the crown.
                 </p>
-                <p>
-                  <a className="btn btn-secondary" href="#" role="button">
-                    View details »
-                  </a>
-                </p>
               </div>
               <div className="col-md-4">
                 <h2>Heading</h2>
@@ -67,11 +60,6 @@ const Homepage = () => {
                   music I'm no longer your muse. I guess that I forgot I had a
                   choice.
                 </p>
-                <p>
-                  <a className="btn btn-secondary" href="#" role="button">
-                    View details »
-                  </a>
-                </p>
               </div>
             </div>
             <hr />
@@ -79,7 +67,7 @@ const Homepage = () => {
           {/* /container */}
         </main>
       </div>
-    </div>
+    </>
   );
 };
 

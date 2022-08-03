@@ -1,15 +1,16 @@
 import React from "react";
 import { FormControl } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
+//import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 const NavBar = () => {
+  const history = useHistory();
   return (
     <>
       <Navbar bg="primary" expand="lg" variant="dark">
@@ -54,18 +55,28 @@ const NavBar = () => {
               เกี่ยวกับเรา
             </NavLink>
 
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
+            <NavDropdown
+              title="Workshop (Pagination + CRUD"
+              id="basic-nav-dropdown"
+            >
+              <NavDropdown.Item
+                onClick={() => {
+                  history.replace("/hospital");
+                }}
+              >
+                ข้อมูลสภานพยาบาล (Pagination)
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
+              <NavDropdown.Item
+                onClick={() => {
+                  history.replace("/category");
+                }}
+              >
+                หมวดหมู่ข่าว (CRUD)
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
+
           <Form inline>
             <FormControl
               type="text"

@@ -98,7 +98,7 @@ const ProductPage = () => {
                       })}
                     </td>
                     <td>
-                      <Badge bg="info">{p.view}</Badge>
+                      <Badge variant="success">{p.view}</Badge>
                     </td>
                     <td>
                       <Image
@@ -109,7 +109,7 @@ const ProductPage = () => {
                       />
                     </td>
                     <td>
-                      <Link to="/detail">
+                      <Link to={`/detail/${p.id}/title/${p.title}`}>
                         <BsEyeFill />
                       </Link>
                     </td>

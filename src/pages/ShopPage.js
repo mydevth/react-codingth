@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
-
-import { Table, Image, Badge, Spinner } from "react-bootstrap";
+import Badge from "react-bootstrap/Badge";
+import { Table, Image, Spinner } from "react-bootstrap";
 import { BsEyeFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
@@ -62,6 +62,14 @@ const ShopPage = () => {
       <div className="row mt-4">
         <div className="col-md-12">
           <h2>ร้านอาหาร</h2>
+          <div>
+            <Link
+              to={{ pathname: "https://github.com/vinothsmart/" }}
+              target="_blank"
+            >
+              xxx
+            </Link>
+          </div>
           <Table striped bordered hover>
             <thead>
               <tr>
@@ -80,19 +88,23 @@ const ShopPage = () => {
                     <td>{index + 1}</td>
                     <td>{s.name}</td>
                     <td>
-                      <Image
-                        src={s.photo}
-                        thumbnail
-                        alt={s.title}
-                        width={100}
-                      />
+                      <Image src={s.photo} thumbnail alt={s.name} width={100} />
                     </td>
                     <td>
-                      <Badge bg="primary">{`${s.location.lat},${s.location.lgn}`}</Badge>
+                      <Link
+                        to={{
+                          pathname: `https://${s.location.lat},${s.location.lgn}`,
+                        }}
+                        target="_blank"
+                      >
+                        <Badge variant="success">{`${s.location.lat},${s.location.lgn}`}</Badge>
+                      </Link>
                     </td>
-                    <Link to="/menu">
-                      <BsEyeFill />
-                    </Link>
+                    <td>
+                      <Link to={`/menu/${s.id}`}>
+                        <BsEyeFill />
+                      </Link>
+                    </td>
                   </tr>
                 );
               })}

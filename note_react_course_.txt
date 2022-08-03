@@ -28,7 +28,20 @@ styled-components
 	npm install --save style-components@5
 	
 Section 5 ใช้ React ร่วมกับ Bootstrap
- npm install bootstrap@4
-
+ Bootstrap
+	npm install bootstrap@4
+ React Bootstrap
+	npm install react-bootstrap@1
+	npm install popper.js --save
+ React Icons
+	npm install react-icons@4 --save
+React Router DOM
+	npm install react-router-dom@5
+	
+Section 6 ติดต่อกับ Backend
+ axios
+	npm install axios@0
+ date-fns
+	npm install date-fns@2 --save
 	
 	
