@@ -1,4 +1,6 @@
 import React from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Homepage from "./pages/HomePage";
@@ -11,35 +13,39 @@ import DetailPage from "./pages/DetailPage";
 import MenuPage from "./pages/MenuPage";
 import HospitalPage from "./pages/hospital/HospitalPage";
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <Router>
-      <NavBar />
-      <Switch>
-        <Route path="/hospital">
-          <HospitalPage />
-        </Route>
-        <Route path="/product">
-          <ProductPage />
-        </Route>
-        <Route path="/shop">
-          <ShopPage />
-        </Route>
-        <Route path="/about">
-          <AboutPage />
-        </Route>
-        <Route path="/detail/:id/title/:title">
-          <DetailPage />
-        </Route>
-        <Route path="/menu/:id">
-          <MenuPage />
-        </Route>
-        <Route exact path="/">
-          <Homepage />
-        </Route>
-      </Switch>
-      <Footer />
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <NavBar />
+        <Switch>
+          <Route path="/hospital">
+            <HospitalPage />
+          </Route>
+          <Route path="/product">
+            <ProductPage />
+          </Route>
+          <Route path="/shop">
+            <ShopPage />
+          </Route>
+          <Route path="/about">
+            <AboutPage />
+          </Route>
+          <Route path="/detail/:id/title/:title">
+            <DetailPage />
+          </Route>
+          <Route path="/menu/:id">
+            <MenuPage />
+          </Route>
+          <Route exact path="/">
+            <Homepage />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
+    </QueryClientProvider>
   );
 }
 
