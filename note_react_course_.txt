@@ -43,5 +43,19 @@ Section 6 ติดต่อกับ Backend
 	npm install axios@0
  date-fns
 	npm install date-fns@2 --save
+
+react-js-pagination
+	$ npm install react-js-pagination
+	
+React Query
+	npm i react-query@3
+	
+Section7
+React Hook Form
+	npm install react-hook-form@6
+	Validation
+	npm install @hookform/resolvers@1 yup@0
+	
+
 	
 	

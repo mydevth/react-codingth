@@ -64,9 +64,10 @@ const NavBar = () => {
                   history.replace("/hospital");
                 }}
               >
-                ข้อมูลสภานพยาบาล (Pagination)
+                ข้อมูลสถานพยาบาล (Pagination)
               </NavDropdown.Item>
               <NavDropdown.Divider />
+
               <NavDropdown.Item
                 onClick={() => {
                   history.replace("/category");
