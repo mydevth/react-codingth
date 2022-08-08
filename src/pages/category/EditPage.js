@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useToasts } from "react-toast-notifications";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -12,6 +12,7 @@ const schema = yup.object().shape({
 });
 
 const EditPage = () => {
+  const { addToast } = useToasts();
   const history = useHistory();
   const { id } = useParams();
 
@@ -19,26 +20,28 @@ const EditPage = () => {
     resolver: yupResolver(schema),
   });
 
-  const getData = async (id) => {
+  const getData = React.useCallback(async () => {
     const resp = await axios.get(
       "https://api.codingthailand.com/api/category/" + id
     );
     // console.log(resp.data);
     setValue("name", resp.data.name);
-  };
+  }, [id, setValue]);
 
   React.useEffect(() => {
-    console.log("user effect editpage");
-    getData(id);
-  }, [id]);
+    // console.log("user effect editpage");
+    getData();
+  }, [getData]);
 
   const onSubmit = async (data) => {
     // console.log(data);
     const apiUrl = "https://api.codingthailand.com/api/category";
-    const resp = await axios.post(apiUrl, {
+    const resp = await axios.put(apiUrl, {
+      id: id,
       name: data.name,
     });
-    alert(resp.data.message); //บันทึกข้อมูลเรียบร้อย
+    // alert(resp.data.message); //บันทึกข้อมูลเรียบร้อย
+    addToast(resp.data.message, { appearance: "success", autoDismiss: true });
     history.replace("/category");
   };
 

@@ -1,8 +1,5 @@
-import React from "react";
-import { FormControl } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-//import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
+import React, { useEffect, useState } from "react";
+
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -11,6 +8,27 @@ import { NavLink, useHistory } from "react-router-dom";
 
 const NavBar = () => {
   const history = useHistory();
+  const [profile, setProfile] = useState(null);
+
+  const getProfile = () => {
+    const profileValue = JSON.parse(localStorage.getItem("profile"));
+    if (profileValue) {
+      setProfile(profileValue);
+    }
+  };
+
+  React.useEffect(() => {
+    // console.log("use effect navbar");
+    getProfile();
+  }, []);
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("profile");
+    history.replace("/");
+    history.go(0);
+  };
+
   return (
     <>
       <Navbar bg="primary" expand="lg" variant="dark">
@@ -37,7 +55,7 @@ const NavBar = () => {
         </Navbar.Brand> */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="mr-auto">
             <NavLink className="nav-link" to="/" exact activeClassName="active">
               Home
             </NavLink>
@@ -76,17 +94,43 @@ const NavBar = () => {
                 หมวดหมู่ข่าว (CRUD)
               </NavDropdown.Item>
             </NavDropdown>
+            <NavLink className="nav-link" to="/upload" activeClassName="active">
+              อัปโหลดไฟล์
+            </NavLink>
+
+            <NavLink className="nav-link" to="/member" activeClassName="active">
+              เมนูสมาชิก
+            </NavLink>
           </Nav>
 
-          <Form inline>
-            <FormControl
-              type="text"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
+          {profile ? (
+            <span className="navbar-text text-white">
+              ยินดีต้อนรับคุณ {profile.name} role: {profile.role}
+              <button className="btn btn-danger ml-2" onClick={logout}>
+                {" "}
+                Log out{" "}
+              </button>
+            </span>
+          ) : (
+            <>
+              <Nav>
+                <NavLink
+                  className="nav-link"
+                  to="/register"
+                  activeClassName="active"
+                >
+                  สมัครสมาชิก
+                </NavLink>
+                <NavLink
+                  className="nav-link"
+                  to="/login"
+                  activeClassName="active"
+                >
+                  เข้าสู่ระบบ
+                </NavLink>
+              </Nav>
+            </>
+          )}
         </Navbar.Collapse>
         {/* </Container> */}
       </Navbar>

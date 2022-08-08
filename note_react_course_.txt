@@ -56,6 +56,30 @@ React Hook Form
 	Validation
 	npm install @hookform/resolvers@1 yup@0
 	
+https://www.npmjs.com/package/react-toast-notifications
+https://react-hot-toast.com/
+
+npm install react-toast-notifications@2
+-------------------------------------------
+App.js
+   import { ToastProvider } from 'react-toast-notifications';
+   
+   const App = () => (
+ <ToastProvider placement="top-center" autoDismissTimeout={3000}>
+    <xxxxxx />
+  </ToastProvider>
+);
+-------------------------------------
+-------------------------------------------------
+ไฟล์ที่ต้องการ
+
+import { useToasts } from "react-toast-notifications";
+    ......
+    const { addToast } = useToasts(); // ในฟังก์ชั่นที่ใช้
+ 
+     addToast(resp.data.data.message, {appearance: "success", autoDismiss: true,});
+-------------------------------------------------------------------------------
+	
 
 	
 	
