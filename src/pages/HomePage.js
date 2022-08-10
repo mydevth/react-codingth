@@ -3,8 +3,14 @@ import { BsFillChatSquareDotsFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import { useQuery } from "@tanstack/react-query";
+import { UserStoreContext } from "../context/UserContext";
+
+import { useSelector } from "react-redux";
 
 const Homepage = () => {
+  const userStore = React.useContext(UserStoreContext);
+  const profileRedux = useSelector((state) => state.authReducer.profile);
+
   // const { isLoading, error, data, isFetching } = useQuery(["getData"], () =>
   //   fetch(
   //     "https://api.codingthailand.com/api/news?page=1&per_page=3"
@@ -56,12 +62,36 @@ const Homepage = () => {
           {/* Main jumbotron for a primary marketing message or call to action */}
           <div className="jumbotron">
             <div className="container">
-              <h1 className="display-3">ยินดีต้อนรับทุกคน!</h1>
-              <p>
-                เว็บนี้พัฒนาด้วย React เป็นคอร์สเรียนวิดีโอจาก
-                Codingthailand.com By โค๊ชเอก{" "}
-                <BsFillChatSquareDotsFill color="red" size="2em" />
-              </p>
+              {/* 
+              // Context
+              {userStore.profile ? (
+                <h3 className="display-3">
+                  สวัสดีคุณ {userStore.profile.name}
+                </h3>
+              ) : (
+                <h1 className="display-3">ยินดีต้อนรับทุกคน!</h1>
+              )} */}
+
+              {profileRedux ? (
+                <>
+                  <h1 className="display-3">คุณ {profileRedux.name} </h1>
+                  <p>
+                    กำลังเรียนคอร์สเรียนวิดีโอ เรื่อง การพัฒนาเว็บด้วย React จาก
+                    Codingthailand.com
+                  </p>
+                </>
+              ) : (
+                <>
+                  <h1 className="display-3">ยินดีต้อนรับทุกคน! </h1>
+
+                  <p>
+                    เว็บนี้พัฒนาด้วย React เป็นคอร์สเรียนวิดีโอจาก
+                    Codingthailand.com
+                    <BsFillChatSquareDotsFill color="red" size="2em" />
+                  </p>
+                </>
+              )}
+
               <p>
                 <Link
                   className="btn btn-primary btn-lg"

@@ -7,6 +7,10 @@ import * as yup from "yup";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
+// import { UserStoreContext } from "../context/UserContext";
+
+import { useDispatch } from "react-redux"; // เรียก action
+import { updateProfile } from "../redux/actions/authAction";
 
 const schema = yup.object().shape({
   email: yup.string().required("อีเมลห้ามว่าง").email("รูปแบบอีเมลไม่ถูกต้อง"),
@@ -19,6 +23,10 @@ const schema = yup.object().shape({
 const LoginPage = () => {
   const history = useHistory();
   const { addToast } = useToasts();
+ // const userStore = React.useContext(UserStoreContext);  // Context
+
+  //call redux action
+  const dispatch = useDispatch();
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
@@ -55,8 +63,14 @@ const LoginPage = () => {
         appearance: "success",
         autoDismiss: true,
       });
+      // history.replace("/");
+      // history.go(0);
+
+      // update profile by context
+      const profileValue = JSON.parse(localStorage.getItem("profile"));
+      // userStore.updateProfile(profileValue); // Context
+      dispatch(updateProfile(profileValue)); // Redux
       history.replace("/");
-      history.go(0);
     } catch (error) {
       addToast(error.response.data.message, {
         appearance: "error",

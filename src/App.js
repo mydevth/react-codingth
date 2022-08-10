@@ -1,6 +1,7 @@
 import React from "react";
 import { ToastProvider } from "react-toast-notifications";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import UserStoreProvider from "./context/UserContext";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -21,72 +22,93 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import MemberPage from "./pages/MemberPage";
 import PrivateRoute from "./guard/auth";
+import Promptpay from "./pages/PaymentPage";
+import { BillPay } from "./pages/billpayment/BillPayment";
 
+// redux setup
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import rootReducer from "./redux/reducers/index";
+import CartPage from "./pages/CartPage";
+
+const store = createStore(rootReducer);
 const queryClient = new QueryClient();
 
 function App() {
   return (
-    <ToastProvider placement="top-center" autoDismissTimeout={3000}>
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <NavBar />
-          <Switch>
-            <Route
-              path="/category"
-              render={({ match: { url } }) => (
-                <>
-                  <Route path={`${url}/`} exact>
-                    <IndexPage />
-                  </Route>
-                  <Route path={`${url}/create`}>
-                    <CreatePage />
-                  </Route>
-                  <Route path={`${url}/edit/:id`}>
-                    <EditPage />
-                  </Route>
-                </>
-              )}
-            ></Route>
+    <Provider store={store}>
+      <UserStoreProvider>
+        <ToastProvider placement="top-center" autoDismissTimeout={3000}>
+          <QueryClientProvider client={queryClient}>
+            <Router>
+              <NavBar />
+              <Switch>
+                <Route
+                  path="/category"
+                  render={({ match: { url } }) => (
+                    <>
+                      <Route path={`${url}/`} exact>
+                        <IndexPage />
+                      </Route>
+                      <Route path={`${url}/create`}>
+                        <CreatePage />
+                      </Route>
+                      <Route path={`${url}/edit/:id`}>
+                        <EditPage />
+                      </Route>
+                    </>
+                  )}
+                ></Route>
+                <PrivateRoute path="/member">
+                  <MemberPage />
+                </PrivateRoute>
 
-            <PrivateRoute path="/member">
-              <MemberPage />
-            </PrivateRoute>
-
-            <Route path="/register">
-              <RegisterPage />
-            </Route>
-            <Route path="/login">
-              <LoginPage />
-            </Route>
-            <Route path="/upload">
-              <UploadPage />
-            </Route>
-            <Route path="/hospital">
-              <HospitalPage />
-            </Route>
-            <Route path="/product">
-              <ProductPage />
-            </Route>
-            <Route path="/shop">
-              <ShopPage />
-            </Route>
-            <Route path="/about">
-              <AboutPage />
-            </Route>
-            <Route path="/detail/:id/title/:title">
-              <DetailPage />
-            </Route>
-            <Route path="/menu/:id">
-              <MenuPage />
-            </Route>
-            <Route exact path="/">
-              <Homepage />
-            </Route>
-          </Switch>
-          <Footer />
-        </Router>
-      </QueryClientProvider>
-    </ToastProvider>
+                <Route path="/cart">
+                  <CartPage />
+                </Route>
+                <Route path="/billpay">
+                  <BillPay />
+                </Route>
+                <Route path="/payment">
+                  <Promptpay />
+                </Route>
+                <Route path="/register">
+                  <RegisterPage />
+                </Route>
+                <Route path="/login">
+                  <LoginPage />
+                </Route>
+                <Route path="/upload">
+                  <UploadPage />
+                </Route>
+                <Route path="/hospital">
+                  <HospitalPage />
+                </Route>
+                <Route path="/product">
+                  <ProductPage />
+                </Route>
+                <Route path="/shop">
+                  <ShopPage />
+                </Route>
+                <Route path="/about">
+                  <AboutPage />
+                </Route>
+                <Route path="/detail/:id/title/:title">
+                  <DetailPage />
+                </Route>
+                <Route path="/menu/:id">
+                  <MenuPage />
+                </Route>
+                <Route exact path="/">
+                  <Homepage />
+                </Route>
+              </Switch>
+              <Footer />
+            </Router>
+          </QueryClientProvider>
+        </ToastProvider>
+      </UserStoreProvider>
+    </Provider>
   );
 }
 
