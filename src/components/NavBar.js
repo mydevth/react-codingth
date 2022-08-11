@@ -19,6 +19,7 @@ const NavBar = () => {
 
   // redux
   const profileRedux = useSelector((state) => state.authReducer.profile);
+  const total = useSelector((state) => state.cartReducer.total);
   const dispatch = useDispatch();
 
   // const getProfile = () => {
@@ -120,7 +121,7 @@ const NavBar = () => {
             </NavLink>
 
             <NavLink className="nav-link" to="/cart" activeClassName="active">
-              ตระกร้าสินค้า 0 ชิ้น
+              ตระกร้าสินค้า {total} ชิ้น
             </NavLink>
 
             <NavDropdown

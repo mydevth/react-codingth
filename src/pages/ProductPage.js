@@ -8,11 +8,20 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 
+//redux
+import { addToCart } from "../redux/actions/cartAction";
+import { useSelector, useDispatch } from "react-redux";
+
 const ProductPage = () => {
   const [product, setProduct] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
   const cancelToken = React.useRef(null);
+
+  //redux
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cartReducer.cart);
+  const total = useSelector((state) => state.cartReducer.total);
 
   const getData = async () => {
     try {
@@ -64,14 +73,28 @@ const ProductPage = () => {
     );
   }
 
+  //redux
+  const addCart = (p) => {
+    // console.log(p);
+    const product = {
+      id: p.id,
+      name: p.title,
+      price: p.view, //สมมุติ view ค่าราคา
+      qty: 1,
+    };
+    //call action
+    dispatch(addToCart(product, cart));
+  };
+
   return (
     <div className="container">
       <div className="row mt-4">
         <div className="col-md-12">
           <div>
-            <h3>
+            <h2>
               <Badge bg="secondary">สินค้า</Badge>
-            </h3>
+            </h2>
+            {total > 0 && <h4>ซื้อแล้ว {total} </h4>}
           </div>
           <Table striped bordered hover>
             <thead>
@@ -112,6 +135,12 @@ const ProductPage = () => {
                       <Link to={`/detail/${p.id}/title/${p.title}`}>
                         <BsEyeFill />
                       </Link>
+                      <button
+                        onClick={() => addCart(p)}
+                        className="btn btn-outline-success ml-2"
+                      >
+                        หยิบใส่ตระกร้า
+                      </button>
                     </td>
                   </tr>
                 );
