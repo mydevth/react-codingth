@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+React 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Git
+Node
+VS Code 
+  VS Code Extensions
+	ES7 React/Redux/GraphQl/Ract-Native snippets
+	html to JSX
+	Material Icon Theme
+	Prettier - Code formatter
+		copy ไปไว้ที่ setting
+		"[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
 
-## Available Scripts
+Postman
+Chrome Extensions - React Developer Tools
 
-In the project directory, you can run:
+Create React App
+https://reactjs.org/docs/create-a-new-react-app.html
+ npx create-react-app <project-name>
+ 
+PropTyeps  (props typechecking)
+	npm install --save prop-types@15
+	
+styled-components
+	www.styled-components.com
+	npm install --save style-components@5
+	
+Section 5 ใช้ React ร่วมกับ Bootstrap
+ Bootstrap
+	npm install bootstrap@4
+ React Bootstrap
+	npm install react-bootstrap@1
+	npm install popper.js --save
+ React Icons
+	npm install react-icons@4 --save
+React Router DOM
+	npm install react-router-dom@5
+	
+Section 6 ติดต่อกับ Backend
+ axios
+	npm install axios@0
+ date-fns
+	npm install date-fns@2 --save
 
-### `npm start`
+react-js-pagination
+	$ npm install react-js-pagination
+	
+React Query
+	npm i react-query@3
+	
+Section7
+React Hook Form
+	npm install react-hook-form@6
+	Validation
+	npm install @hookform/resolvers@1 yup@0
+	
+https://www.npmjs.com/package/react-toast-notifications
+https://react-hot-toast.com/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+npm install react-toast-notifications@2
+-------------------------------------------
+App.js
+   import { ToastProvider } from 'react-toast-notifications';
+   
+   const App = () => (
+ <ToastProvider placement="top-center" autoDismissTimeout={3000}>
+    <xxxxxx />
+  </ToastProvider>
+);
+-------------------------------------
+-------------------------------------------------
+ไฟล์ที่ต้องการ
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+import { useToasts } from "react-toast-notifications";
+    ......
+    const { addToast } = useToasts(); // ในฟังก์ชั่นที่ใช้
+ 
+     addToast(resp.data.data.message, {appearance: "success", autoDismiss: true,});
+-------------------------------------------------------------------------------
+	
+	REACT ROUTER
+https://v5.reactrouter.com/web/example/auth-workflow
 
-### `npm test`
+Redux
+	npm install redux@4 --save
+	npm install react-redux@7 --save
+	
+Redux persist   เก็บข้อมูลลงใน local storage
+	npm install redux-persist@6
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+	
+	

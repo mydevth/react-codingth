@@ -27,11 +27,14 @@ import { BillPay } from "./pages/billpayment/BillPayment";
 
 // redux setup
 import { Provider } from "react-redux";
-import { createStore } from "redux";
-import rootReducer from "./redux/reducers/index";
+// import { createStore } from "redux";    //ของเดิมที่ไม่ได้ใช้ของ persist local storage
+// import rootReducer from "./redux/reducers/index"; //ของเดิมที่ไม่ได้ใช้ของ persist local storage
 import CartPage from "./pages/CartPage";
 
-const store = createStore(rootReducer);
+// const store = createStore(rootReducer);   //ของเดิมที่ไม่ได้ใช้ของ persist local storage
+import configureStore from "./redux/configureStore";
+const { store } = configureStore(); // ของ persist
+
 const queryClient = new QueryClient();
 
 function App() {
