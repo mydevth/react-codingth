@@ -90,5 +90,10 @@ Redux
 Redux persist   เก็บข้อมูลลงใน local storage
 	npm install redux-persist@6
 
-	
-	
+Redux Thunk ให้ code run async ได้
+	 npm install redux-thunk
+
+Redux DevTools Extension ใช้งานร่วมกัน redux persist - thunk
+https://github.com/zalmoxisus/redux-devtools-extension
+	npm install --save redux-devtools-extension
+

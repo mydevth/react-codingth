@@ -27,6 +27,12 @@ import { BillPay } from "./pages/billpayment/BillPayment";
 
 // redux setup
 import { Provider } from "react-redux";
+
+//thunk setup เข้ามาแล้วไม่ใช้ persist จะใช้ 3 บรรทัดนี้
+// import { createStore, applyMiddleware } from 'redux'
+// import thunk from 'redux-thunk'
+// const store = createStore(rootReducer, applyMiddleware(thunk))
+
 // import { createStore } from "redux";    //ของเดิมที่ไม่ได้ใช้ของ persist local storage
 // import rootReducer from "./redux/reducers/index"; //ของเดิมที่ไม่ได้ใช้ของ persist local storage
 import CartPage from "./pages/CartPage";
