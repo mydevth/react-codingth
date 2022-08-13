@@ -24,6 +24,8 @@ import MemberPage from "./pages/MemberPage";
 import PrivateRoute from "./guard/auth";
 import Promptpay from "./pages/PaymentPage";
 import { BillPay } from "./pages/billpayment/BillPayment";
+import PdfReport from "./pages/report/PdfReport";
+import excelReport from "./pages/report/ExcelReport";
 
 // redux setup
 import { Provider } from "react-redux";
@@ -36,9 +38,10 @@ import { Provider } from "react-redux";
 // import { createStore } from "redux";    //ของเดิมที่ไม่ได้ใช้ของ persist local storage
 // import rootReducer from "./redux/reducers/index"; //ของเดิมที่ไม่ได้ใช้ของ persist local storage
 import CartPage from "./pages/CartPage";
-
 // const store = createStore(rootReducer);   //ของเดิมที่ไม่ได้ใช้ของ persist local storage
 import configureStore from "./redux/configureStore";
+import ChartReport from "./pages/report/ChartReport";
+
 const { store } = configureStore(); // ของ persist
 
 const queryClient = new QueryClient();
@@ -86,6 +89,15 @@ function App() {
                 </Route>
                 <Route path="/login">
                   <LoginPage />
+                </Route>
+                <Route path="/reportpdf">
+                  <PdfReport />
+                </Route>
+                <Route path="/excelreport">
+                  <excelReport />
+                </Route>
+                <Route path="/chartreport">
+                  <ChartReport />
                 </Route>
                 <Route path="/upload">
                   <UploadPage />

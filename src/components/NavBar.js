@@ -154,6 +154,13 @@ const NavBar = () => {
             </NavLink>
             <NavLink
               className="nav-link"
+              to="/chartreport"
+              activeClassName="active"
+            >
+              Chart Report
+            </NavLink>
+            <NavLink
+              className="nav-link"
               to="/payment"
               activeClassName="active"
             >

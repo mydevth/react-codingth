@@ -97,3 +97,14 @@ Redux DevTools Extension ใช้งานร่วมกัน redux persist -
 https://github.com/zalmoxisus/redux-devtools-extension
 	npm install --save redux-devtools-extension
 
+Section10 Report pdf / chart
+	React-pdf
+	npm install @react-pdf/renderer@1 --save
+
+	 npm install "@david.kucsai/react-pdf-table"
+	
+	Charts
+	https://recharts.org/en-US
+	npm install recharts
+
+
